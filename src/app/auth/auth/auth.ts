@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
 	selector: 'app-auth',
@@ -11,8 +12,12 @@ export class Auth {
 	loginForm: FormGroup;
 	registerForm: FormGroup;
 	showLogin = true;
+	error = '';
 
-	constructor(private fb: FormBuilder) {
+	constructor(
+		private fb: FormBuilder,
+		private authService: AuthService
+	) {
 		this.loginForm = this.fb.group({
 			email: ['', [Validators.required, Validators.email]],
 			password: ['', [Validators.required, Validators.minLength(6)]],
@@ -28,11 +33,16 @@ export class Auth {
 
 	toggleForm() {
 		this.showLogin = !this.showLogin;
+		this.error = '';
 	}
 
 	onLogin() {
 		if (this.loginForm.valid) {
-			console.log('Login data:', this.loginForm.value);
+			const { email, password } = this.loginForm.value;
+			const success = this.authService.login(email, password);
+			if (!success) {
+				this.error = 'Credenciales inválidas. Usa admin@viamatica.com / admin123';
+			}
 		}
 	}
 

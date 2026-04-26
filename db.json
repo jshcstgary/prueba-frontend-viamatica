@@ -1,0 +1,79 @@
+{
+	"profiles": [
+		{
+			"id": "7b2d1e4a-5f9c-4b3d-8e7a-9c2b1d0e4f5a",
+			"name": "ADMIN",
+			"description": "Administrador total del sistema",
+			"createdAt": "2026-04-25T10:00:00Z",
+			"updatedAt": "2026-04-25T10:00:00Z"
+		},
+		{
+			"id": "c9a8b7d6-e5f4-3c2b-1a09-8d7c6b5a4f3e",
+			"name": "SUPPORT",
+			"description": "Personal técnico encargado de resolver tickets",
+			"createdAt": "2026-04-25T10:05:00Z",
+			"updated_at": "2026-04-25T10:05:00Z"
+		},
+		{
+			"id": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+			"name": "CLIENT",
+			"description": "Usuario final que reporta incidentes",
+			"createdAt": "2026-04-25T10:10:00Z",
+			"updated_at": "2026-04-25T10:10:00Z"
+		}
+	],
+	"modules": [
+		{
+			"id": "f1e2d3c4-b5a6-4789-8c9d-0e1f2a3b4c5d",
+			"name": "Seguridad",
+			"description": "Gestión de usuarios y accesos",
+			"active": true
+		},
+		{
+			"id": "a1b2c3d4-e5f6-4a5b-bc6d-7e8f9a0b1c2d",
+			"name": "Tickets",
+			"description": "Operaciones principales de soporte",
+			"active": true
+		}
+	],
+	"options": [
+		{
+			"id": "e1d2c3b4-a5f6-4a5b-9c8d-7e6f5a4b3c2d",
+			"moduleId": "f1e2d3c4-b5a6-4789-8c9d-0e1f2a3b4c5d",
+			"name": "Usuarios",
+			"path": "/admin/users",
+			"icon": "users-icon"
+		},
+		{
+			"id": "d1c2b3a4-e5f6-4789-9c8d-7e6f5a4b3c2e",
+			"moduleId": "a1b2c3d4-e5f6-4a5b-bc6d-7e8f9a0b1c2d",
+			"name": "Mis Tickets",
+			"path": "/tickets/my-list",
+			"icon": "ticket-icon"
+		},
+		{
+			"id": "c1b2a3d4-e5f6-4789-9c8d-7e6f5a4b3c2f",
+			"moduleId": "a1b2c3d4-e5f6-4a5b-bc6d-7e8f9a0b1c2d",
+			"name": "Dashboard Soporte",
+			"path": "/tickets/manage",
+			"icon": "dashboard-icon"
+		}
+	],
+	"profiles_options": [
+		{
+			"id": "11111111-2222-3333-4444-555555555555",
+			"profileId": "7b2d1e4a-5f9c-4b3d-8e7a-9c2b1d0e4f5a",
+			"optionId": "e1d2c3b4-a5f6-4a5b-9c8d-7e6f5a4b3c2d"
+		},
+		{
+			"id": "22222222-3333-4444-5555-666666666666",
+			"profileId": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+			"optionId": "d1c2b3a4-e5f6-4789-9c8d-7e6f5a4b3c2e"
+		},
+		{
+			"id": "33333333-4444-5555-6666-777777777777",
+			"profileId": "c9a8b7d6-e5f4-3c2b-1a09-8d7c6b5a4f3e",
+			"optionId": "c1b2a3d4-e5f6-4789-9c8d-7e6f5a4b3c2f"
+		}
+	]
+}

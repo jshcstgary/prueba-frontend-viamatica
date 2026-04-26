@@ -1,0 +1,87 @@
+<div class="min-h-screen flex bg-gray-50">
+	<!-- Sidebar -->
+	<aside class="w-64 bg-white border-r border-gray-200 hidden md:flex flex-col shadow-sm">
+		<div class="p-6 h-full flex flex-col">
+			<div class="flex items-center space-x-3 mb-10">
+				<div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center">
+					<span class="text-white font-bold text-xl">V</span>
+				</div>
+				<span class="text-xl font-bold text-gray-900 tracking-tight">Viamatica</span>
+			</div>
+
+			<nav class="space-y-1 flex-1">
+				<a
+					routerLink="/modules"
+					routerLinkActive="bg-indigo-50 text-indigo-700 font-semibold"
+					class="flex items-center px-4 py-3 text-gray-600 rounded-xl hover:bg-gray-50 transition group"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 group-hover:text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+					</svg>
+					Módulos
+				</a>
+				<a
+					routerLink="/options"
+					routerLinkActive="bg-indigo-50 text-indigo-700 font-semibold"
+					class="flex items-center px-4 py-3 text-gray-600 rounded-xl hover:bg-gray-50 transition group"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 group-hover:text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+					</svg>
+					Opciones
+				</a>
+				<a
+					routerLink="/profiles"
+					routerLinkActive="bg-indigo-50 text-indigo-700 font-semibold"
+					class="flex items-center px-4 py-3 text-gray-600 rounded-xl hover:bg-gray-50 transition group"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 group-hover:text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+					</svg>
+					Perfiles
+				</a>
+			</nav>
+
+			<div class="pt-4 border-t border-gray-100">
+				<button
+					(click)="logout()"
+					class="w-full flex items-center px-4 py-3 text-red-500 hover:bg-red-50 rounded-xl transition font-medium"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+					</svg>
+					Cerrar Sesión
+				</button>
+			</div>
+		</div>
+	</aside>
+
+	<!-- Main Content -->
+	<div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+		<!-- Header -->
+		<header class="h-20 bg-white border-b border-gray-200 flex items-center justify-between px-8 shadow-sm relative z-10">
+			<button class="md:hidden text-gray-600">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+				</svg>
+			</button>
+
+			<div class="flex-1 flex justify-end">
+				<div class="flex items-center space-x-4">
+					<div class="hidden sm:flex flex-col items-end">
+						<span class="text-sm font-bold text-gray-900">{{ user()?.name }}</span>
+						<span class="text-xs text-gray-500">Administrador de Viamatica</span>
+					</div>
+					<div class="w-10 h-10 rounded-full bg-indigo-100 border-2 border-white shadow-sm flex items-center justify-center overflow-hidden">
+						<img src="https://ui-avatars.com/api/?name=Admin+Viamatica&background=6366f1&color=fff" alt="User Avatar">
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- Main View -->
+		<main class="flex-1 overflow-y-auto bg-gray-50">
+			<router-outlet></router-outlet>
+		</main>
+	</div>
+</div>

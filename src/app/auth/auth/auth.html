@@ -61,6 +61,10 @@
 					(ngSubmit)="onLogin()"
 					class="space-y-5"
 				>
+					<div *ngIf="error" class="bg-red-50 text-red-600 p-3 rounded-lg text-sm border border-red-100 animate-pulse">
+						{{ error }}
+					</div>
+
 					<div>
 						<label
 							for="login-email"

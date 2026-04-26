@@ -1,0 +1,79 @@
+<div class="p-8 bg-white min-h-screen">
+	<div class="max-w-4xl mx-auto">
+		<header class="mb-8">
+			<h1 class="text-3xl font-bold text-gray-900">Perfiles de Usuario</h1>
+			<p class="text-gray-600">Administra los roles y privilegios del sistema.</p>
+		</header>
+
+		<div class="bg-gray-50 border border-gray-200 rounded-xl p-6 shadow-sm">
+			<div class="flex justify-between items-center mb-6">
+				<h2 class="text-xl font-semibold text-gray-700">Lista de Perfiles</h2>
+				<button
+					class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-200"
+				>
+					Nuevo Perfil
+				</button>
+			</div>
+
+			<div class="overflow-x-auto">
+				<table class="w-full text-left border-collapse">
+					<thead>
+						<tr class="border-b border-gray-300">
+							<th class="py-3 px-4 font-bold uppercase text-sm text-gray-600">ID</th>
+							<th class="py-3 px-4 font-bold uppercase text-sm text-gray-600">
+								Nombre
+							</th>
+							<th class="py-3 px-4 font-bold uppercase text-sm text-gray-600">
+								Descripción
+							</th>
+							<th class="py-3 px-4 font-bold uppercase text-sm text-gray-600">
+								Acciones
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						@if (loading()) {
+							<tr>
+								<td colspan="4" class="py-10 text-center text-gray-500 italic">
+									<div class="flex items-center justify-center space-x-2">
+										<div
+											class="w-4 h-4 rounded-full bg-indigo-500 animate-bounce"
+										></div>
+										<span>Loading...</span>
+									</div>
+								</td>
+							</tr>
+						} @else {
+							@for (profile of profiles(); track profile.id) {
+								<tr class="border-b border-gray-200 hover:bg-gray-100 transition">
+									<td
+										class="py-3 px-4 text-xs text-gray-500 truncate max-w-[100px]"
+									>
+										{{ profile.id }}
+									</td>
+									<td class="py-3 px-4 font-medium text-gray-800">
+										{{ profile.name }}
+									</td>
+									<td class="py-3 px-4 text-gray-600">
+										{{ profile.description }}
+									</td>
+									<td
+										class="py-3 px-4 text-indigo-600 hover:underline cursor-pointer font-medium"
+									>
+										Editar
+									</td>
+								</tr>
+							} @empty {
+								<tr>
+									<td colspan="4" class="py-10 text-center text-gray-500">
+										No existen registros
+									</td>
+								</tr>
+							}
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
