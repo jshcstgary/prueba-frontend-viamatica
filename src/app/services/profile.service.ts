@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { Profile, Response } from '../types/maintainer';
+import { Profile } from '../types/maintainer';
+import { Response } from '../types/response';
 
 @Injectable({
 	providedIn: 'root',
@@ -12,27 +13,11 @@ export class ProfileService {
 	constructor(private http: HttpClient) { }
 
 	getAll(): Observable<Response<Profile[]>> {
-		// return this.http.get<Response<Profile[]>>(this.apiUrl);
-
-		// This is only to use json-server
-		return this.http.get<Profile[]>(this.apiUrl).pipe(
-			map((data) => ({
-				success: 'success',
-				data,
-			})),
-		);
+		return this.http.get<Response<Profile[]>>(this.apiUrl);
 	}
 
 	getById(id: string): Observable<Response<Profile>> {
-		// return this.http.get<Response<Profile>>(`${this.apiUrl}/${id}`);
-
-		// This is only to use json-server
-		return this.http.get<Profile>(this.apiUrl).pipe(
-			map((data) => ({
-				success: 'success',
-				data,
-			})),
-		);
+		return this.http.get<Response<Profile>>(`${this.apiUrl}/${id}`);
 	}
 
 	create(profile: Omit<Profile, 'id'>): Observable<Profile> {

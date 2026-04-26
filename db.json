@@ -75,5 +75,82 @@
 			"profileId": "c9a8b7d6-e5f4-3c2b-1a09-8d7c6b5a4f3e",
 			"optionId": "c1b2a3d4-e5f6-4789-9c8d-7e6f5a4b3c2f"
 		}
+	],
+	"users": [
+		{
+			"id": "9f1c2a3b-4d5e-6f70-8a9b-0c1d2e3f4a5b",
+			"name": "Admin Principal",
+			"email": "admin@system.com",
+			"password": "admin123",
+			"profileId": "7b2d1e4a-5f9c-4b3d-8e7a-9c2b1d0e4f5a"
+		},
+		{
+			"id": "8e7d6c5b-4a3f-2e1d-0c9b-8a7f6e5d4c3b",
+			"name": "Soporte Técnico",
+			"email": "support@system.com",
+			"password": "support123",
+			"profileId": "c9a8b7d6-e5f4-3c2b-1a09-8d7c6b5a4f3e"
+		},
+		{
+			"id": "7a6b5c4d-3e2f-1a0b-9c8d-7e6f5a4b3c2d",
+			"name": "Cliente Demo",
+			"email": "client@system.com",
+			"password": "clientr123",
+			"profileId": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d"
+		}
+	],
+	"tickets": [
+		{
+			"id": "aa11bb22-cc33-dd44-ee55-ff6677889900",
+			"title": "Error al iniciar sesión",
+			"description": "No puedo acceder con mis credenciales",
+			"status": "OPEN",
+			"priority": "HIGH",
+			"createdAt": "2026-04-25T11:00:00Z",
+			"updatedAt": "2026-04-25T11:00:00Z",
+			"userId": "7a6b5c4d-3e2f-1a0b-9c8d-7e6f5a4b3c2d",
+			"assignedTo": "Soporte Técnico"
+		},
+		{
+			"id": "bb22cc33-dd44-ee55-ff66-001122334455",
+			"title": "Problema en módulo de tickets",
+			"description": "La lista no carga correctamente",
+			"status": "IN_PROGRESS",
+			"priority": "MEDIUM",
+			"createdAt": "2026-04-25T11:10:00Z",
+			"updatedAt": "2026-04-25T11:30:00Z",
+			"userId": "7a6b5c4d-3e2f-1a0b-9c8d-7e6f5a4b3c2d",
+			"assignedTo": "Soporte Técnico"
+		}
+	],
+	"comments": [
+		{
+			"id": "c1d2e3f4-a5b6-4789-9c8d-7e6f5a4b3aaa",
+			"content": "Estamos revisando el problema",
+			"createdAt": "2026-04-25T11:05:00Z",
+			"userId": "8e7d6c5b-4a3f-2e1d-0c9b-8a7f6e5d4c3b",
+			"ticketId": "aa11bb22-cc33-dd44-ee55-ff6677889900"
+		},
+		{
+			"id": "d4e5f6a7-b8c9-4012-9d8c-7b6a5e4d3c2b",
+			"content": "El problema persiste",
+			"createdAt": "2026-04-25T11:15:00Z",
+			"userId": "7a6b5c4d-3e2f-1a0b-9c8d-7e6f5a4b3c2d",
+			"ticketId": "aa11bb22-cc33-dd44-ee55-ff6677889900"
+		}
+	],
+	"assignments": [
+		{
+			"id": "e5f6a7b8-c9d0-4123-8c9d-7e6f5a4b3c2a",
+			"userId": "8e7d6c5b-4a3f-2e1d-0c9b-8a7f6e5d4c3b",
+			"ticketId": "aa11bb22-cc33-dd44-ee55-ff6677889900",
+			"assignedAt": "2026-04-25T11:02:00Z"
+		},
+		{
+			"id": "f6a7b8c9-d0e1-4234-9c8d-7e6f5a4b3c29",
+			"userId": "8e7d6c5b-4a3f-2e1d-0c9b-8a7f6e5d4c3b",
+			"ticketId": "bb22cc33-dd44-ee55-ff66-001122334455",
+			"assignedAt": "2026-04-25T11:12:00Z"
+		}
 	]
 }

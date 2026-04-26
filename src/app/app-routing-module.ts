@@ -9,15 +9,21 @@ const routes: Routes = [
 		loadChildren: () => import('./auth/auth-module').then((m) => m.AuthModule),
 	},
 	{
-		path: 'maintainer',
+		path: '',
 		component: LayoutComponent,
 		canActivate: [authGuard],
 		children: [
 			{
-				path: '',
+				path: 'maintainer',
 				loadChildren: () =>
 					import('./maintainer/maintainer-module').then((m) => m.MaintainerModule),
 			},
+			{
+				path: 'tickets',
+				loadChildren: () =>
+					import('./tickets/tickets-module').then((m) => m.TicketsModule),
+			},
+			{ path: '', redirectTo: 'maintainer', pathMatch: 'full' },
 		],
 	},
 	{ path: '**', redirectTo: 'auth' },
@@ -27,4 +33,4 @@ const routes: Routes = [
 	imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

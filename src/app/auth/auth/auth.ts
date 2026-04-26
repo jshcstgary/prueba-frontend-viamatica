@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-auth',
@@ -13,10 +14,13 @@ export class Auth {
 	registerForm: FormGroup;
 	showLogin = true;
 	error = '';
+	successMessage = '';
+	isSubmitting = signal<boolean>(false);
 
 	constructor(
 		private fb: FormBuilder,
-		private authService: AuthService
+		private authService: AuthService,
+		private router: Router
 	) {
 		this.loginForm = this.fb.group({
 			email: ['', [Validators.required, Validators.email]],
@@ -34,21 +38,57 @@ export class Auth {
 	toggleForm() {
 		this.showLogin = !this.showLogin;
 		this.error = '';
+		this.successMessage = '';
 	}
 
 	onLogin() {
 		if (this.loginForm.valid) {
+			this.isSubmitting.set(true);
+			this.error = '';
 			const { email, password } = this.loginForm.value;
-			const success = this.authService.login(email, password);
-			if (!success) {
-				this.error = 'Credenciales inválidas. Usa admin@viamatica.com / admin123';
-			}
+
+			this.authService.login(email, password).subscribe({
+				next: (success) => {
+					this.isSubmitting.set(false);
+					this.router.navigate(['/maintainer/modules']);
+					if (!success) {
+						this.error = 'Credenciales inválidas.';
+					}
+				},
+				error: (err) => {
+					this.isSubmitting.set(false);
+					this.error = 'Ocurrió un error en el servidor.';
+				},
+			});
 		}
 	}
 
 	onRegister() {
 		if (this.registerForm.valid) {
-			console.log('Register data:', this.registerForm.value);
+			const { password, confirmPassword } = this.registerForm.value;
+
+			if (password !== confirmPassword) {
+				this.error = 'Las contraseñas no coinciden.';
+				return;
+			}
+
+			this.isSubmitting.set(true);
+			this.error = '';
+			this.successMessage = '';
+
+			const { name, email } = this.registerForm.value;
+			this.authService.register({ name, email, password }).subscribe({
+				next: (response) => {
+					this.isSubmitting.set(false);
+					this.successMessage = 'Usuario registrado con éxito. Ahora puedes iniciar sesión.';
+					this.showLogin = true;
+					this.registerForm.reset();
+				},
+				error: (err) => {
+					this.isSubmitting.set(false);
+					this.error = 'Error al registrar el usuario. Inténtalo de nuevo.';
+				},
+			});
 		}
 	}
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { Option, Response } from '../types/maintainer';
+import { Option } from '../types/maintainer';
+import { Response } from '../types/response';
 
 @Injectable({
 	providedIn: 'root',
@@ -12,27 +13,11 @@ export class OptionService {
 	constructor(private http: HttpClient) { }
 
 	getAll(): Observable<Response<Option[]>> {
-		// return this.http.get<Response<Option[]>>(this.apiUrl);
-
-		// This is only to use json-server
-		return this.http.get<Option[]>(this.apiUrl).pipe(
-			map((data) => ({
-				success: 'success',
-				data,
-			})),
-		);
+		return this.http.get<Response<Option[]>>(this.apiUrl);
 	}
 
 	getById(id: string): Observable<Response<Option>> {
-		// return this.http.get<Response<Option>>(`${this.apiUrl}/${id}`);
-
-		// This is only to use json-server
-		return this.http.get<Option>(this.apiUrl).pipe(
-			map((data) => ({
-				success: 'success',
-				data,
-			})),
-		);
+		return this.http.get<Response<Option>>(`${this.apiUrl}/${id}`);
 	}
 
 	create(option: Omit<Option, 'id'>): Observable<Option> {

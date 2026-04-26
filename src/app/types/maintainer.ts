@@ -1,8 +1,3 @@
-export type Response<T> = {
-	success: string;
-	data: T;
-};
-
 export type Module = {
 	id: string;
 	name: string;

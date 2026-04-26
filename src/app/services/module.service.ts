@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { Module, Response } from '../types/maintainer';
+import { Module } from '../types/maintainer';
+import { Response } from '../types/response';
 
 @Injectable({
 	providedIn: 'root',
@@ -12,27 +13,11 @@ export class ModuleService {
 	constructor(private http: HttpClient) { }
 
 	getAll(): Observable<Response<Module[]>> {
-		// return this.http.get<Response<Module[]>>(this.apiUrl);
-
-		// This is only to use json-server
-		return this.http.get<Module[]>(this.apiUrl).pipe(
-			map((data) => ({
-				success: 'success',
-				data,
-			})),
-		);
+		return this.http.get<Response<Module[]>>(this.apiUrl);
 	}
 
 	getById(id: string): Observable<Response<Module>> {
-		// return this.http.get<Response<Module>>(`${this.apiUrl}/${id}`);
-
-		// This is only to use json-server
-		return this.http.get<Module>(this.apiUrl).pipe(
-			map((data) => ({
-				success: 'success',
-				data,
-			})),
-		);
+		return this.http.get<Response<Module>>(`${this.apiUrl}/${id}`);
 	}
 
 	create(module: Omit<Module, 'id'>): Observable<Module> {
