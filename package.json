@@ -9,7 +9,6 @@
     "test": "pnpm dlx @angular/cli test"
   },
   "private": true,
-  "packageManager": "pnpm@10.12.4",
   "dependencies": {
     "@angular/common": "21.2.0",
     "@angular/compiler": "21.2.0",
